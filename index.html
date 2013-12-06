@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Flickr API testing</title>
+<link rel="stylesheet" href="style.css" />
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+
+</head>
+
+<body>
+
+<div class="container">
+<br />
+
+<p>Hello</p>
+<div id="images"></div>
+<div id="linkx"></div>
+<script>
+
+(function() {
+var flickerAPI = "http://api.flickr.com/services/feeds/photos_public.gne?&jsoncallback=?";
+
+
+$.getJSON( flickerAPI, 
+	{
+
+		tags: "Heisenberg",
+		tagmode: "any",
+		format: "json"
+	})
+.done(function( data ) 
+	{
+
+		var htmlString = [];
+		$.each( data.items, function( i, item ) 
+		{
+
+		if ( i === 50 ) 
+		{
+			return false;
+		}
+		console.log(item.link);
+		htmlString += '<a href="' + item.link + '">aaaa</a>';
+		});
+
+			$('#linkx').html(htmlString);
+
+	});
+
+})(); //end function
+
+
+</script>
+</div>
+
+
+</body>
+
+
+
+</html>
