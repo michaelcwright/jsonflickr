@@ -18,7 +18,7 @@
 
 <div class="searchx">
 <form method="post" action="index.php?page=1">
-	<p><h2><span class="lettera">flick</span><span class="letterc">r</span></h2>by mike</p>
+	<p><h1><span class="lettera">flick</span><span class="letterc">r</span></h1><span class="undertitle">by mike</span></p>
 
 	    <label for="exampleInputEmail1">Search</label>
 			<input type="text" class="form-control" name="tag" placeholder="Enter search">

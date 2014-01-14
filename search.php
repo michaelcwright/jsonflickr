@@ -1,7 +1,9 @@
 <?php 
 	require_once('FirePHP.class.php');
 	ob_start();
-	$api_key = '5f1c750205bb27a91b5adabe177e5e9a';
+	$api_key = '51b857396625437cea5a13da621222b6';
+	
+	//get the tag
 	if (isset($_GET['tag']) && isset($_GET['perPage']))
 	{
 		$tag = $_GET['tag'];
@@ -11,6 +13,8 @@
 		$perPage = $_SESSION['perPage'];
 	}
 	$page = $_GET['page'];
+	
+	//sets up for pagination
 	if($perPage == 25)
 	{
 		$max = 161;
@@ -27,15 +31,13 @@
 	$max2 = $max - 2;
 	$max1 = $max - 1;
 	$cleanTag = cleanUp($tag);
+	
+	//cleans up tag
 	function cleanUp($tag) 
 	{
-	    //Lower case everything
 	    $tag = strtolower($tag);
-	    //Make alphanumeric (removes all other characters)
 	    $tag = preg_replace("/[^a-z0-9_\s-]/", "", $tag);
-	    //Clean up multiple dashes or whitespaces
 	    $tag = preg_replace("/[\s-]+/", " ", $tag);
-	    //Convert whitespaces and underscore to comma
 	    $tag = preg_replace("/[\s_]/", ",", $tag);
 	    return $tag;
 	}
@@ -44,15 +46,19 @@
 	$url = 'http://api.flickr.com/services/rest/?method=flickr.photos.search&api_key='. $api_key .'&tags=' . $cleanTag .'&per_page=' . $perPage .'&page='.$page.'&tag_mode=any&format=json&nojsoncallback=1';
 
 
+	//get json string and convert to variable
 	$response = json_decode(file_get_contents($url));
+	
+	//sends response to object and display on website
 	$pArray = $response->photos->photo;
-
-	include 'objectP.php'; 
+	include 'objectP.php';
+ 
 
 	$firephp = FirePHP::getInstance(true);
 	$firephp->log($response, 'Iterators');
 	$firephp->log($pArray, 'Iterators');
-	$x = 0;
+	
+	//start pagination
 	$prevp = $page - 1;
 	$nextp = $page + 1;
 	$next = $page + 1;
@@ -164,11 +170,7 @@
 	}
 	
 	}
-	
-	/*if (isset($_GET['page']) && $page == 1){
-	echo '<div class="centerx">Prev ';
-	echo '<a href="index.php?page='. $nextp .'&tag='.$_SESSION['tag'].'">Next</a></div>';
-	}*/
+
 	}
 
  
