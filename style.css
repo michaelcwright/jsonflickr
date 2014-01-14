@@ -5,18 +5,52 @@ html, body{
 	height:100%;
 }
 
-.container{
+.containerv{
 	height:auto;
 	min-height:100%;
 	width:900px;
-	background-color:#b2b2b2;
 	margin-right:auto;
 	margin-left:auto;
-
+	border-right:1px;
+	border-left:1px;
+	border-top:0;
+	border-bottom:0;
+	font-size:12px;
+	border-style:solid;
+	border-color:#cbcbcb;
 }
-#linkx{
-	width:900px;
-	height:auto;
+.searchx{
+	width:159px;
+	margin-right:auto;
+	margin-left:auto;
+	height:280px;
 	text-align:center;
-
+}
+.lettera{
+	color:#0063db;
+}
+.letterc{
+	color:#ff0084;
+}
+.centerx{
+	width:360px;
+	margin-right:auto;
+	margin-left:auto;
+	padding-top:15px;
+	height:60px;
+	text-align:center;
+	font-size:14px;
+}
+.centerx a{
+	text-decoration:underline;
+	margin:0 3px 0 3px;
+	color:#0059c5;
+}
+.centerx bold{
+	margin:0 3px 0 3px;
+}
+.results{
+	width:751px;
+	height:auto;
+	margin:0 auto 0 auto;
 }

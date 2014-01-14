@@ -3,7 +3,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>Flickr API testing</title>
+<title>Flickr API search</title>
 <link rel="stylesheet" href="style.css" />
 <link rel="stylesheet" href="css/bootstrap.css" />
 <link rel="stylesheet" href="css/bootstrap-theme.css" />
@@ -12,38 +12,78 @@
 </head>
 
 <body>
-<div class="container">
+<div class="containerv">
 
-
-<!---------------------- FIRST ROW ---------------------------->
-<div class="row">
-<div class="col-md-12">
 <br />
 
+<div class="searchx">
 <form method="post" action="index.php?page=1">
-<p><h2>Search</h2></p>
-<input type="text" name="tag" >
-<br /><br />
-<input type="submit" value="search">
-</form>
+	<p><h2><span class="lettera">flick</span><span class="letterc">r</span></h2>by mike</p>
 
+	    <label for="exampleInputEmail1">Search</label>
+			<input type="text" class="form-control" name="tag" placeholder="Enter search">
+			<br />
+	<label for="exampleInputEmail1">Number per page:</label>	
+	<select id="pageNumber" name="pageNumber" class="form-control">
+	  <option value="25"<?php 
+	if(empty($_SESSION['perPage']) && empty($_GET['perPage']))
+		{
+			echo "selected";
+		}
+	if (isset($_SESSION['perPage']))
+		{
+			if($_SESSION['perPage'] == 25)
+			echo "selected";
+		}
+	elseif(isset($_GET['perPage'])){
+			if($_GET['perPage'] == 25)
+			echo "selected";
+		}?>>25</option>
+	  <option value="100" <?php  	
+	if (isset($_SESSION['perPage']))
+		{
+			if($_SESSION['perPage'] == 100)
+			echo "selected";
+		}
+	elseif(isset($_GET['perPage'])){
+			if($_GET['perPage'] == 100)
+			echo "selected";
+		}?>>100</option>
+	  <option value="250" <?php  	
+	if (isset($_SESSION['perPage']))
+		{
+			if($_SESSION['perPage'] == 250)
+			echo "selected";
+		}
+	elseif(isset($_GET['perPage']))
+		{
+			if($_GET['perPage'] == 250)
+			echo "selected";
+		}?>>200</option>
+	</select> <br />
+		<p><button type="submit" class="btn btn-default" value="search">Submit</button></p>
+</form>
+</div>
+<br />
+
+<div class="loading"></div>
+<div class="results">	
 <?php 
 	if(isset($_GET['page']))
 	{
 	    if($_GET['page'] == 1)
 	    {	    
+
 		    $_SESSION['tag'] = $_POST['tag'];
+		    $_SESSION['perPage'] = $_POST['pageNumber'];
 		    include 'search.php';
 	    }else{
+
 		    include 'search.php';
 	    }
 	}
 
 ?>
-
-
-
-</div>
 </div>
 </div>
 
