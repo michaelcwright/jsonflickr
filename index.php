@@ -9,6 +9,7 @@
 <link rel="stylesheet" href="css/bootstrap-theme.css" />
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
+
 </head>
 
 <body>
@@ -17,7 +18,7 @@
 <br />
 
 <div class="searchx">
-<form method="post" action="index.php?page=1">
+<form method="post" id="form1"action="index.php?page=1">
 	<p><h1><span class="lettera">flick</span><span class="letterc">r</span></h1><span class="undertitle">by mike</span></p>
 
 	    <label for="exampleInputEmail1">Search</label>
@@ -59,24 +60,32 @@
 		{
 			if($_GET['perPage'] == 250)
 			echo "selected";
-		}?>>200</option>
+		}?>>250</option>
 	</select> <br />
 		<p><button type="submit" class="btn btn-default" value="search">Submit</button></p>
 </form>
 </div>
 <br />
 
-<div class="loading"></div>
-<div class="results">	
+
+	
 <?php 
 	if(isset($_GET['page']))
 	{
 	    if($_GET['page'] == 1)
 	    {	    
-
+		if(isset($_POST['tag']) && isset($_POST['pageNumber']))
+		{
 		    $_SESSION['tag'] = $_POST['tag'];
 		    $_SESSION['perPage'] = $_POST['pageNumber'];
 		    include 'search.php';
+		}
+		elseif(isset($_GET['tag']) && isset($_GET['page']))
+		{
+			$tag = $_GET['tag'];
+			$page = $_GET['page'];
+			include 'search.php';
+		}
 	    }else{
 
 		    include 'search.php';
@@ -84,7 +93,7 @@
 	}
 
 ?>
-</div>
+
 </div>
 
 

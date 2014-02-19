@@ -1,7 +1,7 @@
 <?php 
 	require_once('FirePHP.class.php');
 	ob_start();
-	$api_key = '51b857396625437cea5a13da621222b6';
+	$api_key = '5f1c750205bb27a91b5adabe177e5e9a';
 	
 	//get the tag
 	if (isset($_GET['tag']) && isset($_GET['perPage']))
@@ -43,17 +43,21 @@
 	}
 	//flickr allows only 4000 photos to be returned
 	if($_GET['page'] <= $max){
+	//if stat:fail code:100 (this is a bug and the key needs to be switched)
+	//5f1c750205bb27a91b5adabe177e5e9a
+	//51b857396625437cea5a13da621222b6
+	
 	$url = 'http://api.flickr.com/services/rest/?method=flickr.photos.search&api_key='. $api_key .'&tags=' . $cleanTag .'&per_page=' . $perPage .'&page='.$page.'&tag_mode=any&format=json&nojsoncallback=1';
 
 
-	//get json string and convert to variable
+	//get json object and sends to php variable
 	$response = json_decode(file_get_contents($url));
 	
 	//sends response to object and display on website
 	$pArray = $response->photos->photo;
 	include 'objectP.php';
  
-
+	//firephp
 	$firephp = FirePHP::getInstance(true);
 	$firephp->log($response, 'Iterators');
 	$firephp->log($pArray, 'Iterators');
@@ -82,7 +86,7 @@
 		echo '<a href="index.php?page='. $prev4 .'&tag='.$tag.'&perPage='.$perPage.'">'.$prev4.'</a>';
 		echo '<a href="index.php?page='. $prev3 .'&tag='.$tag.'&perPage='.$perPage.'">'.$prev3.'</a>';
 		echo '<a href="index.php?page='. $prev2 .'&tag='.$tag.'&perPage='.$perPage.'">'.$prev2.'</a>';
-		echo '<b>'.$current.'</b>';
+		echo '<span class="spacingfix"><b>'.$current.'</span></b>';
 		echo '<a href="index.php?page='. $next2 .'&tag='.$tag.'&perPage='.$perPage.'">'.$next2.'</a>';
 		echo '<a href="index.php?page='. $next3 .'&tag='.$tag.'&perPage='.$perPage.'">'.$next3.'</a>';
 		echo '<a href="index.php?page='. $next4 .'&tag='.$tag.'&perPage='.$perPage.'">'.$next4.'</a>';
@@ -93,7 +97,7 @@
 		echo '<a href="index.php?page='. $prevp .'&tag='.$tag.'&perPage='.$perPage.'">Prev</a>';
 		echo '<a href="index.php?page='. $prev3 .'&tag='.$tag.'&perPage='.$perPage.'">'.$prev3.'</a>';
 		echo '<a href="index.php?page='. $prev2 .'&tag='.$tag.'&perPage='.$perPage.'">'.$prev2.'</a>';
-		echo '<b>'.$current.'</b>';
+		echo '<span class="spacingfix"><b>'.$current.'</span></b>';
 		echo '<a href="index.php?page='. $next2 .'&tag='.$tag.'&perPage='.$perPage.'">'.$next2.'</a>';
 		echo '<a href="index.php?page='. $next3 .'&tag='.$tag.'&perPage='.$perPage.'">'.$next3.'</a>';
 		echo '<a href="index.php?page='. $next4 .'&tag='.$tag.'&perPage='.$perPage.'">'.$next4.'</a>';
@@ -103,7 +107,7 @@
 		echo '<div class="centerx"><a href="index.php?page=1&tag='.$tag.'">First</a>';
 		echo '<a href="index.php?page='. $prevp .'&tag='.$tag.'&perPage='.$perPage.'">Prev</a>';
 		echo '<a href="index.php?page='. $prev2 .'&tag='.$tag.'&perPage='.$perPage.'">'.$prev2.'</a>';
-		echo '<b>'.$current.'</b>';
+		echo '<span class="spacingfix"><b>'.$current.'</span></b>';
 		echo '<a href="index.php?page='. $next2 .'&tag='.$tag.'&perPage='.$perPage.'">'.$next2.'</a>';
 		echo '<a href="index.php?page='. $next3 .'&tag='.$tag.'&perPage='.$perPage.'">'.$next3.'</a>';
 		echo '<a href="index.php?page='. $next4 .'&tag='.$tag.'&perPage='.$perPage.'">'.$next4.'</a>';
@@ -111,7 +115,7 @@
 	if($_GET['page'] == 1)
 	{
 		echo '<div class="centerx">First Prev ';
-		echo '<b>'.$current.'</b>';
+		echo '<span class="spacingfix"><b>'.$current.'</span></b>';
 		echo '<a href="index.php?page='. $next2 .'&tag='.$tag.'&perPage='.$perPage.'">'.$next2.'</a>';
 		echo '<a href="index.php?page='. $next3 .'&tag='.$tag.'&perPage='.$perPage.'">'.$next3.'</a>';
 		echo '<a href="index.php?page='. $next4 .'&tag='.$tag.'&perPage='.$perPage.'">'.$next4.'</a>';
@@ -124,7 +128,7 @@
 		echo '<a href="index.php?page='. $prev4 .'&tag='.$tag.'&perPage='.$perPage.'">'.$prev4.'</a>';
 		echo '<a href="index.php?page='. $prev3 .'&tag='.$tag.'&perPage='.$perPage.'">'.$prev3.'</a>';
 		echo '<a href="index.php?page='. $prev2 .'&tag='.$tag.'&perPage='.$perPage.'">'.$prev2.'</a>';
-		echo '<b>'.$current.'</b>';
+		echo '<span class="spacingfix"><b>'.$current.'</span></b>';
 		echo '<a href="index.php?page='. $next2 .'&tag='.$tag.'&perPage='.$perPage.'">'.$next2.'</a>';
 		echo '<a href="index.php?page='. $next3 .'&tag='.$tag.'&perPage='.$perPage.'">'.$next3.'</a>';
 		echo '<a href="index.php?page='. $next4 .'&tag='.$tag.'&perPage='.$perPage.'">'.$next4.'</a>';		
@@ -137,7 +141,7 @@
 		echo '<a href="index.php?page='. $prev4 .'&tag='.$tag.'&perPage='.$perPage.'">'.$prev4.'</a>';
 		echo '<a href="index.php?page='. $prev3 .'&tag='.$tag.'&perPage='.$perPage.'">'.$prev3.'</a>';
 		echo '<a href="index.php?page='. $prev2 .'&tag='.$tag.'&perPage='.$perPage.'">'.$prev2.'</a>';
-		echo '<b>'.$current.'</b>';
+		echo '<span class="spacingfix"><b>'.$current.'</span></b>';
 		echo '<a href="index.php?page='. $next2 .'&tag='.$tag.'&perPage='.$perPage.'">'.$next2.'</a>';
 		echo '<a href="index.php?page='. $next3 .'&tag='.$tag.'&perPage='.$perPage.'">'.$next3.'</a>';		
 	}
@@ -149,7 +153,7 @@
 		echo '<a href="index.php?page='. $prev4 .'&tag='.$tag.'&perPage='.$perPage.'">'.$prev4.'</a>';
 		echo '<a href="index.php?page='. $prev3 .'&tag='.$tag.'&perPage='.$perPage.'">'.$prev3.'</a>';
 		echo '<a href="index.php?page='. $prev2 .'&tag='.$tag.'&perPage='.$perPage.'">'.$prev2.'</a>';
-		echo '<b>'.$current.'</b>';
+		echo '<span class="spacingfix"><b>'.$current.'</span></b>';
 		echo '<a href="index.php?page='. $next2 .'&tag='.$tag.'&perPage='.$perPage.'">'.$next2.'</a>';	
 	}
 	
@@ -160,7 +164,7 @@
 		echo '<a href="index.php?page='. $prev4 .'&tag='.$tag.'&perPage='.$perPage.'">'.$prev4.'</a>';
 		echo '<a href="index.php?page='. $prev3 .'&tag='.$tag.'&perPage='.$perPage.'">'.$prev3.'</a>';
 		echo '<a href="index.php?page='. $prev2 .'&tag='.$tag.'&perPage='.$perPage.'">'.$prev2.'</a>';
-		echo '<b>'.$current.'</b>';
+		echo '<span class="spacingfix"><b>'.$current.'</span></b>';
 		echo ' Next Last</div>';	
 	}
 	
