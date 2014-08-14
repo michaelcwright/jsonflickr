@@ -9,11 +9,71 @@ html, body{
 	width:900px;
 	margin-right:auto;
 	margin-left:auto;
-	border-right:1px;
-	border-left:1px;
-	border-top:0;
-	border-bottom:0;
+}
+.topb{
+	background-color:#000;
+	width:100%;
+	height:50px;
+}
+.homex{
+	position: absolute;
+	top: 0px;
+	z-index: 999;
+	left: 80%;
+	cursor: pointer;
+	width:43px;
+	height:50px;
+	background-image:url('home2.png');
+}
+.titlex{
+	float:left;
+	font-family:Anton, sans-serif;
+	font-size:72px;
+	color:#000;
+	margin:10px 0 30px -50px;
+	display:block;
+	height:85px;
+	width:380px;
+}
+ul.pagination{
+	margin:0;
+}
+li{
+	margin:0;
+	border-radius:0;
+}
+.searchx{
+	margin-top:180px;
+	width:309px;
+	margin-right:auto;
+	margin-left:auto;
+	height:400px;
+	text-align:center;
+}
+.flickrLogo{
+	float:left;
+	margin:-4px 0 0 -38px;
+	width:38px;
+	height:39px;
+	background-image:url('flickrLogo.png');
+}
 
+input[type='text'] {
+	float:left;
+    background-image: url(search.png);
+    background-repeat: no-repeat;
+    background-position: 450px;
+	width:495px;
+	margin-left:-105px;
+}
+#subId{
+	float:left;
+	margin:75px 0 0 -72px;
+}
+#perPage{
+	float:left;
+	width:76px;
+	margin:15px 0 0 105px;
 }
 .containerv{
 	height:auto;
@@ -21,21 +81,7 @@ html, body{
 	width:900px;
 	margin-right:auto;
 	margin-left:auto;
-	border-right:1px;
-	border-left:1px;
-	border-top:0;
-	border-bottom:0;
 	font-size:12px;
-	border-style:solid;
-	border-color:#cbcbcb;
-
-}
-.searchx{
-	width:159px;
-	margin-right:auto;
-	margin-left:auto;
-	height:280px;
-	text-align:center;
 }
 .lettera{
 	color:#0063db;
@@ -44,25 +90,23 @@ html, body{
 	color:#ff0084;
 }
 .centerx{
-	width:360px;
+	width:615px;
 	margin-right:auto;
 	margin-left:auto;
-	padding-top:15px;
-	height:60px;
+	height:48px;
 	text-align:center;
 	font-size:14px;
 }
-.centerx a{
-	text-decoration:underline;
-	margin:15px 3px 15px 3px;
-	color:#0059c5;
+.titleColor{
+	color:#ffb000;
 }
+
 .centerx bold{
 	margin:0 3px 0 3px;
 }
 .results{
 	width:751px;
-	height:900px;
+	height:800px;
 	position:relative;
 	margin:0 auto 0 auto;
 }
@@ -85,7 +129,6 @@ html, body{
 	margin:15px 5px 15px 5px;
 }
 .cont{
-
 	width:150px;
 	height:150px;
 	background-color:#b2b2b2;
@@ -143,6 +186,12 @@ html, body{
 	width:150px;
 	margin-right:auto;
 	margin-left:auto;
-	background-color:#000;
 	float:left;
+}
+.loadingGif{
+    display:none;
+	background-image:url('loading.gif');
+	height:128px;
+	width:123px;
+	margin:0 auto 0 auto;
 }
